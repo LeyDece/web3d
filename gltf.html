@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script>
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
+    </link>
+    <title>Include an external X3D-File</title>
+</head>
+
+<body>
+
+    <x3d width='1391px' height='696px'>
+        <scene>
+            <Viewpoint id="front" position="0 0 10" orientation="0 0 10" description="camera" set_bind="true">
+            </Viewpoint>
+            <navigationInfo id="navType"></navigationInfo>
+            <Transform>
+                <inline id="inline" nameSpaceName="sphere" url="square.x3d"> </inline>
+                <inline id="inline" nameSpaceName="sphere" url="sphere.x3d"> </inline>
+                <inline id="inline" nameSpaceName="sphere" url="parking_lot.x3d"> </inline>
+            </Transform>
+        </scene>
+    </x3d>
+
+</body>
+
+<script>
+
+    function changeMode() {
+        // if (currentMode == "walk") {
+        //     currentMode = "any";
+        // } else {
+        //     currentMode = "walk";
+
+        // }
+        let object = document.getElementById('inline');
+        object.setAttribute()
+        console.log(document.getElementById('navType').getAttribute("type"));
+
+        // document.getElementById('navType').setAttribute("type", currentMode);
+        // document.getElementById('mode').innerHTML = currentMode;
+    }
+</script>
+
+</html>
