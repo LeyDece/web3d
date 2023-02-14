@@ -11,201 +11,90 @@
     <title>Include an external X3D-File</title>
 </head>
 
-<body>
+<body width='1349' height='449'>
 
-    <x3d width='1391px' height='696px'>
+    <x3d id="myX3D" width='1349' height='449'>
             <scene>
                 <Viewpoint id="front" position="0 0 10" orientation="0 0 10" description="camera" set_bind="true">
                 </Viewpoint>
                 <navigationInfo id="navType"></navigationInfo>
 
                 <!-- Scene -->
-                <!--Transform translation="0 0 0">
-                    <inline id="inline" nameSpaceName="sphere" url="./batiment.gltf"> </inline>
-                </Transform-->
-
-                <!-- Bureaux -->
-                <Transform translation="-9 0.8 -6">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-9 0.8 -3">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-9 0.8 0">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-9 0.8 3">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-9 0.8 6">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-
-
-                <Transform translation="-6 0.8 -6">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0.8 -3">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0.8 0">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0.8 3">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0.8 6">
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-
-
-                <Transform translation="-3 0.8 -6">
-                    <inline id="inline" nameSpaceName="Desc2" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0.8 -3">
-                    <inline id="inline" nameSpaceName="Desc2" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0.8 0">
-                    <inline id="inline" nameSpaceName="Desc2" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0.8 3">
-                    <inline id="inline" nameSpaceName="Desc2" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0.8 6">
-                    <inline id="inline" nameSpaceName="Desc2" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-
-
-                <Transform translation="0 0.8 -6">
-                    <!--inline id="inline" nameSpaceName="sphere" url="./batiment.gltf"> </inline-->
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="0 0.8 -3">
-                    <!--inline id="inline" nameSpaceName="sphere" url="./batiment.gltf"> </inline-->
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="0 0.8 0">
-                    <!--inline id="inline" nameSpaceName="sphere" url="./batiment.gltf"> </inline-->
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="0 0.8 3">
-                    <!--inline id="inline" nameSpaceName="sphere" url="./batiment.gltf"> </inline-->
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="0 0.8 6">
-                    <!--inline id="inline" nameSpaceName="sphere" url="./batiment.gltf"> </inline-->
-                    <inline id="inline" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-
-
-                <Transform translation="3 0.8 -6">
-                    <inline id="inline" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="3 0.8 -3">
-                    <inline id="inline" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="3 0.8 0">
-                    <inline id="inline" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="3 0.8 3">
-                    <inline id="inline" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-                <Transform translation="3 0.8 6">
-                    <inline id="inline" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
-                </Transform>
-
-
-
-
-                <!-- Chaises -->
-                <Transform translation="-6 0 -6">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0 -3">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0 0">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0 3">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-6 0 6">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-
-
-                <Transform translation="-3 0 -6">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0 -3">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0 0">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0 3">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="-3 0 6">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-
-
-                <Transform translation="0 0 -6">
-                    <inline id="inline" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="0 0 -3">
-                    <inline id="inline" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
                 <Transform translation="0 0 0">
-                    <inline id="inline" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="0 0 3">
-                    <inline id="inline" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="0 0 6">
-                    <inline id="inline" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                    <inline id="scene" nameSpaceName="sphere" url="./gltf/studio_office_interior/scene.gltf"> </inline>
                 </Transform>
 
-
-                <Transform translation="3 0 -6">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <!--Bureaux de la salle de reunion-->
+                <Transform translation="-2.5 0.8 -5">
+                    <inline id="desc1" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
-                <Transform translation="3 0 -3">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="0.5 0.8 -5">
+                    <inline id="desc2" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
-                <Transform translation="3 0 0">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="3 0 3">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
-                <Transform translation="3 0 6">
-                    <inline id="inline" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="3.5 0.8 -5">
+                    <inline id="desc3" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
 
+                <!--Bureau isolé -->
+                <Transform translation="0.2 0.8 3.35">
+                    <inline id="desc4" nameSpaceName="Desc4" url="./gltf/Desc.gltf"> </inline>
+                </Transform>
+                <Transform translation="3.355 0.1 5.4">
+                    <inline id="chair5" nameSpaceName="Chair5" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                </Transform>
 
-                <Transform translation="6 0 -6">
-                    <inline id="inline" nameSpaceName="Chair3" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <!-- Chaises de la salle de reunion-->
+                <Transform translation="0.755 0.2 -2.8">
+                    <inline id="chair1" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
-                <Transform translation="6 0 -3">
-                    <inline id="inline" nameSpaceName="Chair3" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="3.5 0.2 -1.4">
+                    <inline id="chair2" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
-                <Transform translation="6 0 0">
-                    <inline id="inline" nameSpaceName="Chair3" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="3.63 0.2 -2.8">
+                    <inline id="chair3" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
-                <Transform translation="6 0 3">
-                    <inline id="inline" nameSpaceName="Chair3" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="6.575 0.2 -2.8">
+                    <inline id="chair4" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
-                <Transform translation="6 0 6">
-                    <inline id="inline" nameSpaceName="Chair3" url="./gltf/gaming_chair/scene.gltf"> </inline>
-                </Transform>
+
+                      <!-- Description box -->
+                    <div id="descBox" style="display:none; position:absolute; z-index:1; background-color:white; padding:20px;">
+                        <h3>Object Description</h3>
+                        <p id="descText">This is an example description of the object.</p>
+                    </div>
             </scene>
     </x3d>
 </body>
 
-<script>
+  <!-- JavaScript for handling events -->
+  <script type="text/javascript">
+    // Get the X3D element
+    var x3d = document.getElementById("myX3D");
+    // Get the description box element
+    var descBox = document.getElementById("descBox");
+    // Get the description text element
+    var descText = document.getElementById("descText");
+
+    // Add an event listener for mouse clicks on the X3D element
+    x3d.addEventListener("click", function(event) {
+      // Get the object that was clicked on
+      var object = event.target;
+
+      // Check if the object is a GLTF object
+      //if (object.nodeName === "inline") {
+        // Update the description text
+        descText.innerHTML = "You clicked on the " + object.id + " object.";
+
+        // Show the description box
+        descBox.style.display = "";
+
+        // Set the position of the description box
+        descBox.style.left = event.clientX + "px";
+        descBox.style.top = event.clientY + "px";
+     // }
+    });
+  </script>
+<!--script>
 
     function changeMode() {
         // if (currentMode == "walk") {
@@ -221,6 +110,6 @@
         // document.getElementById('navType').setAttribute("type", currentMode);
         // document.getElementById('mode').innerHTML = currentMode;
     }
-</script>
+</script-->
 
 </html>
