@@ -15,7 +15,7 @@
 
     <x3d id="myX3D" width='1349' height='449'>
             <scene>
-                <Viewpoint id="front" position="0 0 10" orientation="0 0 10" description="camera" set_bind="true">
+                <Viewpoint id="front" position="0 2 9.4" orientation="0 2 9.4" description="camera" set_bind="true">
                 </Viewpoint>
                 <navigationInfo id="navType"></navigationInfo>
 
@@ -24,40 +24,46 @@
                     <inline id="scene" nameSpaceName="sphere" url="./gltf/studio_office_interior/scene.gltf"> </inline>
                 </Transform>
 
+                <!-- Bonhomme censé se déplacer dans la scene -->
+                <Transform translation="-3 0.04 4" rotation="0 1 0 3.14159">
+                    <inline nameSpaceName="model" mapDEFToID="true" url="./gltf/perso1/scene.gltf"></inline>
+                </Transform>
+
+
                 <!--Bureaux de la salle de reunion-->
                 <Transform translation="-2.5 0.8 -5">
-                    <inline id="desc1" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc1" class="Desc" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
                 <Transform translation="0.5 0.8 -5">
-                    <inline id="desc2" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc2" class="Desc" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
                 <Transform translation="3.5 0.8 -5">
-                    <inline id="desc3" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc3" class="Desc" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
 
                 <!--Bureau isolé -->
                 <Transform translation="0.2 0.8 3.35">
-                    <inline id="desc4" nameSpaceName="Desc4" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc4" class="Desc" nameSpaceName="Desc4" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
-                <Transform translation="3.355 0.1 5.4">
-                    <inline id="chair5" nameSpaceName="Chair5" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="-3.5 0.1 2.2" rotation="0 1 0 3.14159">
+                    <inline id="chair5" class="chair" nameSpaceName="Chair5" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
 
                 <!-- Chaises de la salle de reunion-->
-                <Transform translation="0.755 0.2 -2.8">
-                    <inline id="chair1" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="-6.28 0.2 -6" rotation="0 1 0 3.14159">
+                    <inline id="chair1" class="chair" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
                 <Transform translation="3.5 0.2 -1.4">
-                    <inline id="chair2" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                    <inline id="chair2" class="chair" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
-                <Transform translation="3.63 0.2 -2.8">
-                    <inline id="chair3" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="-3.2 0.2 -6" rotation="0 1 0 3.14159">
+                    <inline id="chair3" class="chair" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
-                <Transform translation="6.575 0.2 -2.8">
-                    <inline id="chair4" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                <Transform translation="-0.06 0.2 -6" rotation="0 1 0 3.14159">
+                    <inline id="chair4" class="chair" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
 
-                      <!-- Description box -->
+                    <!-- Description box -->
                     <div id="descBox" style="display:none; position:absolute; z-index:1; background-color:white; padding:20px;">
                         <h3>Object Description</h3>
                         <p id="descText">This is an example description of the object.</p>

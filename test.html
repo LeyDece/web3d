@@ -1,49 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script>
-    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
-    </link>
-    <title>Include an external X3D-File</title>
+  <title>Exemple de déplacement de personnage en X3D</title>
+  <script src="https://www.x3dom.org/download/dev/x3dom.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://www.x3dom.org/download/dev/x3dom.css">
 </head>
+<body>
+  <h1>Exemple de déplacement de personnage en X3D</h1>
+  <div id="x3dcontainer" style="width: 400px; height: 400px;">
+    <x3d width="400px" height="400px">
+      <scene>
+        <inline nameSpaceName="model" mapDEFToID="true" url="./gltf/perso1/scene.gltf"></inline>
+        <positioninterpolator DEF="walk" key="0 1" keyValue="0 0 0 0 0 5"></positioninterpolator>
+        <route fromNode="walk" fromField="value_changed" toNode="character" toField="translation"></route>
+        <touchsensor DEF="zone1" enabled="false">
+          <geometry>
+            <shape>
+              <appearance>
+                <material diffuseColor="1 0 0"></material>
+              </appearance>
+              <box size="5 5 5"></box>
+            </shape>
+          </geometry>
+        </touchsensor>
+        <touchsensor DEF="zone2" enabled="false">
+          <geometry>
+            <shape>
+              <appearance>
+                <material diffuseColor="0 4 4"></material>
+              </appearance>
+              <box size="5 5 5"></box>
+            </shape>
+          </geometry>
+        </touchsensor>
+      </scene>
+    </x3d>
+  </div>
+  <script>
+    // Récupération des capteurs TouchSensor
+    var zone1 = document.querySelector('#zone1');
+    var zone2 = document.querySelector('#zone2');
 
-<body width='1349' height='449'>
+    // Récupération de la position du personnage
+    var character = document.querySelector('#character');
 
-    <X3D version='3.3'>
-        <Scene>
-          <Transform translation='0 0 0'>
-            <Shape>
-              <Appearance>
-                <Material diffuseColor='0.8 0.8 0.8' />
-              </Appearance>
-              <Box size='2 0.05 1.5' />
-            </Shape>
-          </Transform>
-          <Transform translation='1 -0.8 0.5'>
-            <Shape>
-              <Appearance>
-                <Material diffuseColor='0.4 0.4 0.4' />
-              </Appearance>
-              <Box size='0.1 0.8 0.1' />
-            </Shape>
-          </Transform>
-          <Transform translation='-1 -0.8 0.5'>
-            <Shape>
-              <Appearance>
-                <Material diffuseColor='0.4 0.4 0.4' />
-              </Appearance>
-              <Box size='0.1 0.8 0.1' />
-            </Shape>
-          </Transform>
-        </Scene>
-      </X3D>
-      
+    // Ajout d'un événement clic sur le plan 2D
+    var plan2D = document.getElementById('plan2D');
+
+    // Déclaration des fonctions pour les événements
+    var moveCharacterToZone1 = function() {
+      zone1.enabled = false;
+      zone2.enabled = true;
+      walk.keyValue = "0 0 0 0 5 5";
+      walk.set_fraction(0);
+      walk.set_endTime(1);
+    };
+
+    var moveCharacterToZone2 = function() {
+      zone1.enabled = true;
+      zone2.enabled = false;
+      walk.keyValue = "0 0 0 0 5 0";
+      walk.set_fraction(0);
+      walk.set_endTime(1);
+    };
+
+    // Ajout des fonctions aux événements
+    plan2D.onclick = moveCharacterToZone1;
+    zone1.onclick = moveCharacterToZone2;
+    zone2.onclick = moveCharacterToZone1;
+  </script>
 </body>
-
- 
-
 </html>
