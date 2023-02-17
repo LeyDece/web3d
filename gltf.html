@@ -180,62 +180,6 @@
         charac.rotation = "0 1 0 0";
         charac.rotation = "0 1 0 -1.570795";
     });
-/*
-    //Déplacement du bonhomme vers le 2nd bureau et chaise
-    desc2.addEventListener("click", function(event){
-        charac.translation="-1 0.04 -4";
-    });
-
-    //Déplacement du bonhomme vers le 3eme bureau et chaise
-    desc3.addEventListener("click", function(event){
-        charac.translation="-3 0.04 -4";
-    });
-*/
-
-/*
-    // Add an event listener for mouse clicks on the X3D element
-    x3d.addEventListener("click", function(event) {
-      // Get the object that was clicked on
-      var object = event.target;
-      alert(event.target.nodeName);
-
-      //if(object.nodeName =="inline"){
-        charac.translation="-3 0.04 -4";
-      //}
-
-      // Check if the object is a GLTF object
-      //if (object.nodeName === "inline") {
-        // Update the description text
-      /*  descText.innerHTML = "You clicked on the " + object.id + " object.";
-
-        // Show the description box
-        descBox.style.display = "";
-
-        // Set the position of the description box
-        descBox.style.left = event.clientX + "px";
-        descBox.style.top = event.clientY + "px";*/
-     // }
-    /*
-// Get the X3D element
-var x3d = document.getElementById("myX3D");
-
-// Get the character's transformation node
-var characterTransform = document.getElementById("character").parentNode;
-
-// Add an event listener for mouse clicks on the X3D element
-x3d.addEventListener("click", function(event) {
-    alert(event.clientX);
-  alert(event.clientY);
-  // Get the intersection point of the click with the scene
-  var intersection = x3d.runtime.pickObject(event.clientX, event.clientY);
-  alert(event.clientX);
-  alert(event.clientY);
-  if (intersection) {
-    // Set the position of the character to the intersection point
-    characterTransform.setAttribute("translation", intersection.point);
-  }
-});*/
-
   </script>
 
   <style>
