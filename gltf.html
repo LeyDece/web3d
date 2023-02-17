@@ -11,10 +11,10 @@
     <title>Include an external X3D-File</title>
 </head>
 
-<body width='1349' height='449'>
+<body width='100%' height='100%'>
     <div id="myX3DContainer">
         <x3d  id="myX3D" width='1349' height='449'>
-            <scene >
+            <scene>
                 <Viewpoint id="front" position="0 2 9.4" orientation="0 2 9.4" description="camera" set_bind="true">
                 </Viewpoint>
                 <navigationInfo id="navType"></navigationInfo>
@@ -32,18 +32,18 @@
 
                 <!--Bureaux de la salle de reunion-->
                 <Transform translation="-2.5 0.8 -5">
-                    <inline id="desc1" class="Desc" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc1" mapDEFToID="true" onclick="movetoDesc1();" ondblclick="showSpe();" class="Desc" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
                 <Transform translation="0.5 0.8 -5">
-                    <inline id="desc2" class="Desc" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc2" class="Desc" onclick="movetoDesc2();" nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
                 <Transform translation="3.5 0.8 -5">
-                    <inline id="desc3" class="Desc" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc3" class="Desc" onclick="movetoDesc3();" nameSpaceName="Desc3" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
 
                 <!--Bureau isolé -->
                 <Transform translation="0.2 0.8 3.35">
-                    <inline id="desc4" class="Desc" nameSpaceName="Desc4" url="./gltf/Desc.gltf"> </inline>
+                    <inline id="desc4" class="Desc" onclick="movetoDesc5();" nameSpaceName="Desc4" url="./gltf/Desc.gltf"> </inline>
                 </Transform>
                 <Transform translation="-3.5 0.1 2.2" rotation="0 1 0 3.14159">
                     <inline id="chair5" class="chair" nameSpaceName="Chair5" url="./gltf/gaming_chair/scene.gltf"> </inline>
@@ -54,21 +54,20 @@
                     <inline id="chair1" class="chair" nameSpaceName="Chair1" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
                 <Transform translation="3.5 0.2 -1.4">
-                    <inline id="chair2" class="chair" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                    <inline id="chair2" onclick="movetoDesc4();" class="chair" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
                 <Transform translation="-3.2 0.2 -6" rotation="0 1 0 3.14159">
                     <inline id="chair3" class="chair" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
                 <Transform translation="-0.06 0.2 -6" rotation="0 1 0 3.14159">
-                    <inline id="chair4" class="chair" nameSpaceName="Chair2" url="./gltf/gaming_chair/scene.gltf"> </inline>
+                    <inline id="chair4" class="chair" nameSpaceName="Chair4" url="./gltf/gaming_chair/scene.gltf"> </inline>
                 </Transform>
-
-                    <!-- Description box -->
-                    <div id="descBox" style="display:none; position:absolute; z-index:1; background-color:white; padding:20px;">
-                        <h3>Object Description</h3>
-                        <p id="descText">This is an example description of the object.</p>
-                    </div>
             </scene>
+            <!-- Description box -->
+            <div id="spec" style="display:none; position:absolute; z-index:1; background-color:white; padding:20px;">
+                <h3>Object Description</h3>
+                <p id="specification">This is an example description of the object.</p>
+            </div>
             <div id="container">
                 <img src="./gltf/Scene2d.png"  id="superposition" usemap="#map" />
                 <map name="map">
@@ -112,7 +111,7 @@
 
     var descs = document.querySelectorAll("inline");
     // Get the description box element
-    var descBox = document.getElementById("descBox");
+    var desc1 = document.getElementById("desc1");
     // Get the description text element
     var descText = document.getElementById("descText");
 
@@ -121,36 +120,27 @@
      */
     //Déplacement du bonhomme vers le 1er bureau et chaise
     b1_2d.addEventListener("click", function(event){
-        charac.translation="-2.8 0.04 -3.88";
-        charac.rotation = "0 1 0 0";
-        charac.rotation = "0 1 0 3.14159";
+        movetoDesc1();
     });
 
     //Déplacement du bonhomme vers le 2nd bureau et chaise
     b2_2d.addEventListener("click", function(event){
-        charac.translation="0.125 0.04 -3.88";
-        charac.rotation = "0 1 0 0";
-        charac.rotation = "0 1 0 3.14159";
+        movetoDesc2();
     });
 
     //Déplacement du bonhomme vers le 2nd bureau et chaise
     b3_2d.addEventListener("click", function(event){
-        charac.translation="3.4 0.04 -3.88";
-        charac.rotation = "0 1 0 0";
-        charac.rotation = "0 1 0 3.14159";
+        movetoDesc3();
     });
 
     //Déplacement du bonhomme vers le 4eme bureau et chaise
     b4_2d.addEventListener("click", function(event){
-        charac.translation="0.125 0.04 -3.4";
-        charac.rotation = "0 1 0 0";
+        movetoDesc4();
     });
 
     //Déplacement du bonhomme vers le 2nd bureau et chaise
     b5_2d.addEventListener("click", function(event){
-        charac.translation="0 0.04 4.40";
-        charac.rotation = "0 1 0 0";
-        charac.rotation = "0 1 0 3.14159";
+        movetoDesc5();
     });
 
     c1_2d.addEventListener("click", function(event){
@@ -180,6 +170,49 @@
         charac.rotation = "0 1 0 0";
         charac.rotation = "0 1 0 -1.570795";
     });
+
+    /**
+     * Deplacement directemetn grace à la scene 3d
+    */
+
+    function movetoDesc1() {
+        charac.translation="-2.8 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    }
+
+    function movetoDesc2() {
+        charac.translation="0.125 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    }
+
+    function movetoDesc3() {
+        charac.translation="3.4 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    }
+
+    function movetoDesc4() {
+        charac.translation="0.125 0.04 -3.4";
+        charac.rotation = "0 1 0 0";
+    }
+
+    function movetoDesc5() {
+        charac.translation="0 0.04 4.40";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    }
+
+    function showSpe() {
+        alert('haha');
+        var div = document.getElementById('spec');
+
+        if (div.display == "none"){
+            div.display = "";
+        }
+    }
+
   </script>
 
 
@@ -192,6 +225,16 @@
         position: absolute;
         top: 0;
         right: 0;
+    }
+
+    #spec {
+        position: relative;
+    }
+
+    #specification {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
     #myX3DContainer {
