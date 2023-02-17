@@ -11,13 +11,16 @@
     <title>Include an external X3D-File</title>
 </head>
 
-<body width='100%' height='100%'>
+<body>
     <div id="myX3DContainer">
         <x3d  id="myX3D" width='1349' height='449'>
-            <scene>
-                <Viewpoint id="front" position="0 2 9.4" orientation="0 2 9.4" description="camera" set_bind="true">
+            <scene >
+                <Viewpoint id="starting_position" position="-3 1 3.5" orientation="0 2 9.4" description="camera" set_bind="true">
                 </Viewpoint>
-                <navigationInfo id="navType"></navigationInfo>
+
+                <Viewpoint id="first_pc" position="-2.8 1 -4.3" orientation="0 2 9.4" description="camera" set_bind="false">
+                </Viewpoint>
+                <navigationInfo type='"walk" "any"' id="navType" ></navigationInfo>
 
                 <!-- Scene -->
                 <Transform translation="0 0 0">
@@ -26,7 +29,7 @@
 
                 <!-- Bonhomme censé se déplacer dans la scene -->
                 <Transform translation="-3 0.04 4" rotation="0 1 0 3.14159">
-                    <inline nameSpaceName="model" id="character" mapDEFToID="true" url="./gltf/perso1/scene.gltf"></inline>
+                    <inline nameSpaceName="model" id="character" url="./gltf/perso1/scene.gltf" onclick='clickHandler();' mapDEFToID="true"></inline>
                 </Transform>
 
 
@@ -96,6 +99,15 @@
   <!-- JavaScript for handling events -->
   <script type="text/javascript">
     // Get the X3D element
+
+    function getNavigationPosition() {
+
+        let position = document.getElementById("navType");
+        console.log(position);
+    }
+
+    setInterval(getNavigationPosition, 10000);
+
     var x3d = document.getElementById("myX3D");
     var charac = document.getElementById("character").parentNode;
     var b1_2d = document.getElementById("b1");
@@ -176,6 +188,7 @@
     */
 
     function movetoDesc1() {
+        document.getElementById("first_pc").setAttribute("set_bind", "true");
         charac.translation="-2.8 0.04 -3.88";
         charac.rotation = "0 1 0 0";
         charac.rotation = "0 1 0 3.14159";
@@ -217,6 +230,18 @@
 
 
   <style>
+
+    html{
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
     #container {
         position: relative;
     }
