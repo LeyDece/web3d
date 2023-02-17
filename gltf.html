@@ -12,21 +12,21 @@
 </head>
 
 <body width='1349' height='449'>
-
-    <x3d id="myX3D" width='1349' height='449'>
-            <scene>
+    <div id="myX3DContainer">
+        <x3d  id="myX3D" width='1349' height='449'>
+            <scene >
                 <Viewpoint id="front" position="0 2 9.4" orientation="0 2 9.4" description="camera" set_bind="true">
                 </Viewpoint>
                 <navigationInfo id="navType"></navigationInfo>
 
                 <!-- Scene -->
                 <Transform translation="0 0 0">
-                    <inline id="scene" nameSpaceName="sphere" url="./gltf/studio_office_interior/scene.gltf"> </inline>
+                    <inline id="scene"  nameSpaceName="sphere" url="./gltf/studio_office_interior/scene.gltf"> </inline>
                 </Transform>
 
                 <!-- Bonhomme censé se déplacer dans la scene -->
                 <Transform translation="-3 0.04 4" rotation="0 1 0 3.14159">
-                    <inline nameSpaceName="model" mapDEFToID="true" url="./gltf/perso1/scene.gltf"></inline>
+                    <inline nameSpaceName="model" id="character" mapDEFToID="true" url="./gltf/perso1/scene.gltf"></inline>
                 </Transform>
 
 
@@ -69,53 +69,195 @@
                         <p id="descText">This is an example description of the object.</p>
                     </div>
             </scene>
-    </x3d>
+            <div id="container">
+                <img src="./gltf/Scene2d.png"  id="superposition" usemap="#map" />
+                <map name="map">
+                    <!-- #$-:Image map file created by GIMP Image Map plug-in -->
+                    <!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+                    <!-- #$-:Please do not edit lines starting with "#$" -->
+                    <!-- #$VERSION:2.3 -->
+                    <!-- #$AUTHOR:rochm -->
+                    <area shape="rect" id="b3" coords="44,12,176,119"  nohref="nohref" />
+                    <area shape="rect" id="b2" coords="47,125,176,249"  nohref="nohref" />
+                    <area shape="rect" id="b1" coords="41,258,180,369"  nohref="nohref" />
+                    <area shape="rect" id="b4" coords="170,164,373,258"  nohref="nohref" />
+                    <area shape="rect" id="b5" coords="400,174,506,301"  nohref="nohref" />
+                    <area shape="rect" id="c2" coords="187,267,344,368"  nohref="nohref" />
+                    <area shape="rect" id="c1" coords="358,304,463,386"  nohref="nohref" />
+                    <area shape="rect" id="c3" coords="188,42,333,154"  nohref="nohref" />
+                    <area shape="rect" id="c4" coords="342,49,490,157"  nohref="nohref" />
+                    <area shape="rect" id="wc" coords="413,135,512,184"  nohref="nohref" />
+                <!--canvas id="x3dcanvas"></canvas-->
+                </map>
+            </div>
+        </x3d>
+    </div>
 </body>
 
   <!-- JavaScript for handling events -->
   <script type="text/javascript">
     // Get the X3D element
     var x3d = document.getElementById("myX3D");
+    var charac = document.getElementById("character").parentNode;
+    var b1_2d = document.getElementById("b1");
+    var b2_2d = document.getElementById("b2");
+    var b3_2d = document.getElementById("b3");
+    var b4_2d = document.getElementById("b4");
+    var b5_2d = document.getElementById("b5");
+    var c1_2d = document.getElementById("c1");
+    var c2_2d = document.getElementById("c2");
+    var c3_2d = document.getElementById("c3");
+    var c4_2d = document.getElementById("c4");
+    var wc_2d = document.getElementById("wc");
+
+    var descs = document.querySelectorAll("inline");
     // Get the description box element
     var descBox = document.getElementById("descBox");
     // Get the description text element
     var descText = document.getElementById("descText");
 
+    /**
+     * Deplacement grace a image 2D
+     */
+    //Déplacement du bonhomme vers le 1er bureau et chaise
+    b1_2d.addEventListener("click", function(event){
+        charac.translation="-2.8 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    //Déplacement du bonhomme vers le 2nd bureau et chaise
+    b2_2d.addEventListener("click", function(event){
+        charac.translation="0.125 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    //Déplacement du bonhomme vers le 2nd bureau et chaise
+    b3_2d.addEventListener("click", function(event){
+        charac.translation="3.4 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    //Déplacement du bonhomme vers le 4eme bureau et chaise
+    b4_2d.addEventListener("click", function(event){
+        charac.translation="0.125 0.04 -3.4";
+        charac.rotation = "0 1 0 0";
+    });
+
+    //Déplacement du bonhomme vers le 2nd bureau et chaise
+    b5_2d.addEventListener("click", function(event){
+        charac.translation="0 0.04 4.40";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    c1_2d.addEventListener("click", function(event){
+        charac.translation="-3 0.04 2";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    c2_2d.addEventListener("click", function(event){
+        charac.translation="-3 0.04 -0.5";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    c3_2d.addEventListener("click", function(event){
+        charac.translation="3.5 0.04 -0.5";
+        charac.rotation = "0 1 0 0";
+    });
+
+    c4_2d.addEventListener("click", function(event){
+        charac.translation="3.5 0.04 2";
+        charac.rotation = "0 1 0 0";
+    });
+
+    wc_2d.addEventListener("click", function(event){
+        charac.translation="2 0.04 3.4";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 -1.570795";
+    });
+/*
+    //Déplacement du bonhomme vers le 2nd bureau et chaise
+    desc2.addEventListener("click", function(event){
+        charac.translation="-1 0.04 -4";
+    });
+
+    //Déplacement du bonhomme vers le 3eme bureau et chaise
+    desc3.addEventListener("click", function(event){
+        charac.translation="-3 0.04 -4";
+    });
+*/
+
+/*
     // Add an event listener for mouse clicks on the X3D element
     x3d.addEventListener("click", function(event) {
       // Get the object that was clicked on
       var object = event.target;
+      alert(event.target.nodeName);
+
+      //if(object.nodeName =="inline"){
+        charac.translation="-3 0.04 -4";
+      //}
 
       // Check if the object is a GLTF object
       //if (object.nodeName === "inline") {
         // Update the description text
-        descText.innerHTML = "You clicked on the " + object.id + " object.";
+      /*  descText.innerHTML = "You clicked on the " + object.id + " object.";
 
         // Show the description box
         descBox.style.display = "";
 
         // Set the position of the description box
         descBox.style.left = event.clientX + "px";
-        descBox.style.top = event.clientY + "px";
+        descBox.style.top = event.clientY + "px";*/
      // }
-    });
+    /*
+// Get the X3D element
+var x3d = document.getElementById("myX3D");
+
+// Get the character's transformation node
+var characterTransform = document.getElementById("character").parentNode;
+
+// Add an event listener for mouse clicks on the X3D element
+x3d.addEventListener("click", function(event) {
+    alert(event.clientX);
+  alert(event.clientY);
+  // Get the intersection point of the click with the scene
+  var intersection = x3d.runtime.pickObject(event.clientX, event.clientY);
+  alert(event.clientX);
+  alert(event.clientY);
+  if (intersection) {
+    // Set the position of the character to the intersection point
+    characterTransform.setAttribute("translation", intersection.point);
+  }
+});*/
+
   </script>
-<!--script>
 
-    function changeMode() {
-        // if (currentMode == "walk") {
-        //     currentMode = "any";
-        // } else {
-        //     currentMode = "walk";
-
-        // }
-        let object = document.getElementById('inline');
-        object.setAttribute()
-        console.log(document.getElementById('navType').getAttribute("type"));
-
-        // document.getElementById('navType').setAttribute("type", currentMode);
-        // document.getElementById('mode').innerHTML = currentMode;
+  <style>
+    #container {
+        position: relative;
     }
-</script-->
 
+    #superposition {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    #myX3DContainer {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    #myX3D {
+        width: 100%;
+        height: 100%;
+    }
+
+  </style>
 </html>
