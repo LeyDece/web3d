@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script>
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
+    </link>
+    <title>Include an external X3D-File</title>
+</head>
+
+<body>
+    <div id="myX3DContainer">
+        <x3d id="myX3D" width='1349' height='449'>
+            <scene>
+                <Viewpoint id="starting_position" position="-3 1 3.5" orientation="0 2 9.4" description="camera"
+                    set_bind="true">
+                </Viewpoint>
+
+                <Viewpoint id="first_pc" position="-2.8 1 -4.3" orientation="0 2 9.4" description="camera"
+                    set_bind="false">
+                </Viewpoint>
+                <navigationInfo type='"walk" "any"' id="navType"></navigationInfo>
+
+                <!-- Scene -->
+                <Transform translation="0 0 0">
+                    <inline id="scene" nameSpaceName="sphere" url="./gltf/studio_office_interior/scene.gltf"> </inline>
+                </Transform>
+
+                <!-- Bonhomme censé se déplacer dans la scene -->
+                <Transform translation="-3 0.04 4" rotation="0 1 0 3.14159">
+                    <inline nameSpaceName="model" id="character" url="./gltf/perso1/scene.gltf"
+                        onclick='clickHandler();' mapDEFToID="true"></inline>
+                </Transform>
+
+
+                <!--Bureaux de la salle de reunion-->
+                <Transform translation="-2.5 0.8 -5">
+                    <inline id="desc1" mapDEFToID="true" onclick="movetoDesc1();" ondblclick="showSpe();" class="Desc"
+                        nameSpaceName="Desc1" url="./gltf/Desc.gltf"> </inline>
+                </Transform>
+                <Transform translation="0.5 0.8 -5">
+                    <inline id="desc2" class="Desc" onclick="movetoDesc2();" nameSpaceName="Desc1"
+                        url="./gltf/Desc.gltf"> </inline>
+                </Transform>
+                <Transform translation="3.5 0.8 -5">
+                    <inline id="desc3" class="Desc" onclick="movetoDesc3();" nameSpaceName="Desc3"
+                        url="./gltf/Desc.gltf"> </inline>
+                </Transform>
+
+                <!--Bureau isolé -->
+                <Transform translation="0.2 0.8 3.35">
+                    <inline id="desc4" class="Desc" onclick="movetoDesc5();" nameSpaceName="Desc4"
+                        url="./gltf/Desc.gltf"> </inline>
+                </Transform>
+                <Transform translation="-3.5 0.1 2.2" rotation="0 1 0 3.14159">
+                    <inline id="chair5" class="chair" onclick="chair5();" nameSpaceName="Chair5"
+                        url="./gltf/gaming_chair/scene.gltf"> </inline>
+                </Transform>
+
+                <!-- Chaises de la salle de reunion-->
+                <Transform translation="-6.28 0.2 -6" rotation="0 1 0 3.14159">
+                    <inline id="chair1" onclick="chair1();" class="chair" nameSpaceName="Chair1"
+                        url="./gltf/gaming_chair/scene.gltf"> </inline>
+                </Transform>
+                <Transform translation="3.5 0.2 -1.4">
+                    <inline id="chair2" onclick="movetoDesc4();" class="chair" nameSpaceName="Chair2"
+                        url="./gltf/gaming_chair/scene.gltf"> </inline>
+                </Transform>
+                <Transform translation="-3.2 0.2 -6" rotation="0 1 0 3.14159">
+                    <inline id="chair3" onclick="chair2();" class="chair" nameSpaceName="Chair2"
+                        url="./gltf/gaming_chair/scene.gltf"> </inline>
+                </Transform>
+                <Transform translation="-0.06 0.2 -6" rotation="0 1 0 3.14159">
+                    <inline id="chair4" onclick="chair3();" class="chair" nameSpaceName="Chair4"
+                        url="./gltf/gaming_chair/scene.gltf"> </inline>
+                </Transform>
+            </scene>
+
+
+            <!-- Description box 1-->
+            <div class="descImage" id="descDsecrip1" height="300" width="300" style="display:none">
+                <div id="descImg" witdh="50%"><img height="150" width="150" src="./gltf/desk-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>1er Bureau de travail</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Desktop disposant d'un OS windows 10.<br><br> Une Unité
+                        centrale de 32GB de RAM et 1TO de stockage.</p>
+                </div>
+            </div>
+
+            <div class="chairDesc" height="300" width="300" style="display:none">
+                <div id="chairImg" witdh="50%"><img height="150" width="150" src="./gltf/gaming-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>1ere Chaise Gamer</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Chaise de bureau amazone 1m de haut et 60cm de large.<br>
+                        Très confortable et pratique.</p>
+                </div>
+            </div>
+
+
+            <!-- Description box 2-->
+            <div class="descImage" id="descDsecrip2" height="300" width="300" style="display:none">
+                <div id="descImg" witdh="50%"><img height="150" width="150" src="./gltf/desk-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>2nd Bureau de travail</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Desktop disposant d'un OS windows 10.<br><br> Une Unité
+                        centrale de 32GB de RAM et 1TO de stockage.</p>
+                </div>
+            </div>
+
+            <div class="chairDesc" height="300" width="300" style="display:none">
+                <div id="chairImg" witdh="50%"><img height="150" width="150" src="./gltf/gaming-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>2nde Chaise Gamer</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Chaise de bureau amazone 1m de haut et 60cm de large.<br>
+                        Très confortable et pratique.</p>
+                </div>
+            </div>
+
+
+            <!-- Description box 3-->
+            <div class="descImage" id="descDsecrip3" height="300" width="300" style="display:none">
+                <div id="descImg" witdh="50%"><img height="150" width="150" src="./gltf/desk-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>3eme Bureau de travail</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Desktop disposant d'un OS windows 10.<br><br> Une Unité
+                        centrale de 32GB de RAM et 1TO de stockage.</p>
+                </div>
+            </div>
+
+            <div class="chairDesc" height="300" width="300" style="display:none">
+                <div id="chairImg" witdh="50%"><img height="150" width="150" src="./gltf/gaming-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>3eme Chaise Gamer</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Chaise de bureau amazone 1m de haut et 60cm de large.<br>
+                        Très confortable et pratique.</p>
+                </div>
+            </div>
+
+
+            <!-- Description box 4-->
+            <div class="descImage" id="descDsecrip4" height="300" width="300" style="display:none">
+                <div id="descImg" witdh="50%"><img height="150" width="150" src="./gltf/desk-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>Bureau de travail</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Desktop disposant d'un OS windows 10.<br><br> Une Unité
+                        centrale de 32GB de RAM et 1TO de stockage.</p>
+                </div>
+            </div>
+
+            <div class="chairDesc" height="300" width="300" style="display:none">
+                <div id="chairImg" witdh="50%"><img height="150" width="150" src="./gltf/gaming-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>4eme Chaise Gamer</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Chaise de bureau amazone 1m de haut et 60cm de large.<br>
+                        Très confortable et pratique.</p>
+                </div>
+            </div>
+
+
+            <!-- Description box 5-->
+            <div class="descImage" id="descDsecrip5" height="300" width="300" style="display:none">
+                <div id="descImg" witdh="50%"><img height="150" width="150" src="./gltf/desk-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>4eme Bureau de travail (prive)</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Desktop disposant d'un OS windows 10.<br><br> Une Unité
+                        centrale de 32GB de RAM et 1TO de stockage.</p>
+                </div>
+            </div>
+
+            <div class="chairDesc" height="300" width="300" style="display:none">
+                <div id="chairImg" witdh="50%"><img height="150" width="150" src="./gltf/gaming-removebg-preview.png" />
+                </div>
+                <div style="text-align: center;">
+                    <h2>5eme Chaise Gamer (prive)</h2>
+                    <p style="margin-top:5%;margin-left: 5%;">Chaise de bureau amazone 1m de haut et 60cm de large.<br>
+                        Très confortable et pratique.</p>
+                </div>
+            </div>
+            <div id="container">
+                <img src="./gltf/Scene2d.png" id="superposition" usemap="#map" />
+                <map name="map">
+                    <!-- #$-:Image map file created by GIMP Image Map plug-in -->
+                    <!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
+                    <!-- #$-:Please do not edit lines starting with "#$" -->
+                    <!-- #$VERSION:2.3 -->
+                    <!-- #$AUTHOR:rochm -->
+                    <area shape="rect" id="b3" coords="44,12,176,119" nohref="nohref" />
+                    <area shape="rect" id="b2" coords="47,125,176,249" nohref="nohref" />
+                    <area shape="rect" id="b1" coords="41,258,180,369" nohref="nohref" />
+                    <area shape="rect" id="b4" coords="170,164,373,258" nohref="nohref" />
+                    <area shape="rect" id="b5" coords="400,174,506,301" nohref="nohref" />
+                    <area shape="rect" id="c2" coords="187,267,344,368" nohref="nohref" />
+                    <area shape="rect" id="c1" coords="358,304,463,386" nohref="nohref" />
+                    <area shape="rect" id="c3" coords="188,42,333,154" nohref="nohref" />
+                    <area shape="rect" id="c4" coords="342,49,490,157" nohref="nohref" />
+                    <area shape="rect" id="wc" coords="413,135,512,184" nohref="nohref" />
+                    <!--canvas id="x3dcanvas"></canvas-->
+                </map>
+            </div>
+        </x3d>
+    </div>
+</body>
+
+<!-- JavaScript for handling events -->
+<script type="text/javascript">
+    // Get the X3D element
+
+    var x3d = document.getElementById("myX3D");
+    var charac = document.getElementById("character").parentNode;
+    var b1_2d = document.getElementById("b1");
+    var b2_2d = document.getElementById("b2");
+    var b3_2d = document.getElementById("b3");
+    var b4_2d = document.getElementById("b4");
+    var b5_2d = document.getElementById("b5");
+    var c1_2d = document.getElementById("c1");
+    var c2_2d = document.getElementById("c2");
+    var c3_2d = document.getElementById("c3");
+    var c4_2d = document.getElementById("c4");
+    var wc_2d = document.getElementById("wc");
+    var descImage = document.getElementsByClassName("descImage");
+    var chairs = document.getElementsByClassName("chairDesc");
+
+    var descs = document.querySelectorAll("inline");
+    // Get the description box element
+    var desc1 = document.getElementById("desc1");
+    // Get the description text element
+    var descText = document.getElementById("descText");
+
+    /**
+     * Deplacement grace a image 2D
+     */
+    //Déplacement du bonhomme vers le 1er bureau et chaise
+    b1_2d.addEventListener("click", function (event) {
+        charac.translation = "-2.8 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    //Déplacement du bonhomme vers le 2nd bureau et chaise
+    b2_2d.addEventListener("click", function (event) {
+        charac.translation = "0.125 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    //Déplacement du bonhomme vers le 2nd bureau et chaise
+    b3_2d.addEventListener("click", function (event) {
+        charac.translation = "3.4 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    //Déplacement du bonhomme vers le 4eme bureau et chaise
+    b4_2d.addEventListener("click", function (event) {
+        movetoDesc4();
+    });
+
+    //Déplacement du bonhomme vers le 2nd bureau et chaise
+    b5_2d.addEventListener("click", function (event) {
+        charac.translation = "0 0.04 4.40";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    c1_2d.addEventListener("click", function (event) {
+        charac.translation = "-3 0.04 2";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    c2_2d.addEventListener("click", function (event) {
+        charac.translation = "-3 0.04 -0.5";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+    });
+
+    c3_2d.addEventListener("click", function (event) {
+        if (charac.translation == "3.5 0.04 2" && charac.rotation == "0 1 0 3.14159") {
+            charac.translation = "3.5 0.04 -0.5";
+            charac.rotation = "0 1 0 3.14159";
+        }
+        else {
+            charac.translation = "3.5 0.04 -0.5";
+            charac.rotation = "0 1 0 0";
+        }
+    });
+
+    c4_2d.addEventListener("click", function (event) {
+        if (charac.translation == "2 0.04 3.4" && charac.rotation == "0 1 0 -1.570795") {
+            charac.translation = "3.5 0.04 2";
+            charac.rotation = "0 1 0 3.14159";
+        }
+        else {
+            charac.translation = "3.5 0.04 2";
+            charac.rotation = "0 1 0 0";
+        }
+    });
+
+    wc_2d.addEventListener("click", function (event) {
+        charac.translation = "2 0.04 3.4";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 -1.570795";
+    });
+
+    /**
+     * Deplacement directemetn grace à la scene 3d
+    */
+
+    function movetoDesc1() {
+        charac.translation = "-2.8 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+        for (i = 0; i < 5; i++) {
+            chairs[i].style.display = "none";
+        }
+        for (i = 1; i < 5; i++) {
+            descImage[i].style.display = "none";
+        }
+        if (descImage[0].style.display == "none") {
+            descImage[0].style.display = "flex";
+        }
+        else {
+            descImage[0].style.display = "none";
+        }
+    }
+
+    function movetoDesc2() {
+        charac.translation = "0.125 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+        for (i = 0; i < 5; i++) {
+            chairs[i].style.display = "none";
+        }
+        descImage[0].style.display = "none";
+        descImage[2].style.display = "none";
+        descImage[3].style.display = "none";
+        descImage[4].style.display = "none";
+        if (descImage[1].style.display == "none") {
+            descImage[1].style.display = "flex";
+        }
+        else {
+            descImage[1].style.display = "none";
+        }
+    }
+
+    function movetoDesc3() {
+        charac.translation = "3.4 0.04 -3.88";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+        for (i = 0; i < 5; i++) {
+            chairs[i].style.display = "none";
+        }
+        descImage[0].style.display = "none";
+        descImage[1].style.display = "none";
+        descImage[3].style.display = "none";
+        descImage[4].style.display = "none";
+        if (descImage[2].style.display == "none") {
+            descImage[2].style.display = "flex";
+        }
+        else {
+            descImage[2].style.display = "none";
+        }
+    }
+
+    function movetoDesc4() {
+        charac.translation = "0.125 0.04 -3.4";
+        charac.rotation = "0 1 0 0";
+        for (i = 0; i < 5; i++) {
+            descImage[i].style.display = "none";
+        }
+        chairs[0].style.display = "none";
+        chairs[2].style.display = "none";
+        chairs[4].style.display = "none";
+        chairs[1].style.display = "none";
+        if (chairs[3].style.display == "none") {
+            chairs[3].style.display = "flex";
+        }
+        else {
+            chairs[3].style.display = "none";
+        }
+    }
+
+    function movetoDesc5() {
+        charac.translation = "0 0.04 4.40";
+        charac.rotation = "0 1 0 0";
+        charac.rotation = "0 1 0 3.14159";
+        for (i = 0; i < 5; i++) {
+            chairs[i].style.display = "none";
+        }
+        descImage[0].style.display = "none";
+        descImage[2].style.display = "none";
+        descImage[3].style.display = "none";
+        descImage[1].style.display = "none";
+        if (descImage[4].style.display == "none") {
+            descImage[4].style.display = "flex";
+        }
+        else {
+            descImage[4].style.display = "none";
+        }
+    }
+
+    function chair1() {
+        for (i = 0; i < 5; i++) {
+            descImage[i].style.display = "none";
+        }
+        for (i = 1; i < 5; i++) {
+            chairs[i].style.display = "none";
+        }
+        if (chairs[0].style.display == "none") {
+            chairs[0].style.display = "flex";
+        }
+        else {
+            chairs[0].style.display = "none";
+        }
+    }
+
+    function chair2() {
+        for (i = 0; i < 5; i++) {
+            descImage[i].style.display = "none";
+        }
+        chairs[0].style.display = "none";
+        chairs[2].style.display = "none";
+        chairs[3].style.display = "none";
+        chairs[4].style.display = "none";
+        if (chairs[1].style.display == "none") {
+            chairs[1].style.display = "flex";
+        }
+        else {
+            chairs[1].style.display = "none";
+        }
+    }
+
+    function chair3() {
+        for (i = 0; i < 5; i++) {
+            descImage[i].style.display = "none";
+        }
+        chairs[0].style.display = "none";
+        chairs[2].style.display = "none";
+        chairs[1].style.display = "none";
+        chairs[4].style.display = "none";
+        if (chairs[2].style.display == "none") {
+            chairs[2].style.display = "flex";
+        }
+        else {
+            chairs[2].style.display = "none";
+        }
+    }
+
+    function chair5() {
+        for (i = 0; i < 5; i++) {
+            descImage[i].style.display = "none";
+        }
+        chairs[0].style.display = "none";
+        chairs[2].style.display = "none";
+        chairs[3].style.display = "none";
+        chairs[1].style.display = "none";
+        if (chairs[4].style.display == "none") {
+            chairs[4].style.display = "flex";
+        }
+        else {
+            chairs[4].style.display = "none";
+        }
+    }
+
+</script>
+
+
+<style>
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #container {
+        position: relative;
+    }
+
+    #superposition {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .chairDesc {
+        border: 2px solid rgba(0, 242, 255, 0.77);
+        position: absolute;
+        top: 50;
+        background-color: lightgreen;
+    }
+
+    .descImage {
+        border: 2px solid rgba(0, 242, 255, 0.77);
+        position: absolute;
+        top: 50;
+        background-color: lightgreen;
+    }
+
+    #chairImg {}
+
+    #myX3DContainer {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #myX3D {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+</html>
